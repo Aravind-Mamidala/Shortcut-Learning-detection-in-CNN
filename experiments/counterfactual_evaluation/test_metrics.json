@@ -1,0 +1,35 @@
+{
+  "split": "test",
+  "sample_count": 48,
+  "accuracy": 0.5,
+  "precision_macro": 0.5,
+  "recall_macro": 0.5,
+  "f1_macro": 0.4857142857142857,
+  "per_class": {
+    "cow": {
+      "sample_count": 24,
+      "accuracy": 0.6666666666666666,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "f1": 0.5714285714285714
+    },
+    "horse": {
+      "sample_count": 24,
+      "accuracy": 0.3333333333333333,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1": 0.4
+    }
+  },
+  "accuracy_by_background": {
+    "grass": 0.5,
+    "sand": 0.5,
+    "snow": 0.5
+  },
+  "evaluated_splits": [
+    "test"
+  ],
+  "checkpoint_sha256": "d047c81ad78cefb9f3c2064b4987546d40b4d0855154b8aec9e26665f91b48b9",
+  "dataset_file_count": 185,
+  "test_composite_count": 48
+}

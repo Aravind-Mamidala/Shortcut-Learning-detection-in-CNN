@@ -1,0 +1,358 @@
+{
+  "project": "Detecting Shortcut Learning in CNNs",
+  "analysis_scope": "Combined analysis of existing dataset, baseline training, counterfactual test evaluation, and Grad-CAM outputs. No training or evaluation was rerun.",
+  "dataset": {
+    "seed": 42,
+    "source_image_limit_per_class": 50,
+    "class_labels": {
+      "cow": 0,
+      "horse": 1
+    },
+    "source_counts_by_split_and_class": {
+      "train": {
+        "cow": 34,
+        "horse": 34
+      },
+      "val": {
+        "cow": 8,
+        "horse": 8
+      },
+      "test": {
+        "cow": 8,
+        "horse": 8
+      }
+    },
+    "distinct_underlying_source_image_ids": 95,
+    "underlying_source_image_ids_by_split": {
+      "train": 65,
+      "val": 15,
+      "test": 15
+    },
+    "source_image_ids_annotated_as_both_classes_by_split": {
+      "train": 3,
+      "val": 1,
+      "test": 1
+    },
+    "composite_counts_by_split": {
+      "train": 68,
+      "val": 48,
+      "test": 48
+    },
+    "train_background_counts_by_class": {
+      "cow": {
+        "grass": 31,
+        "sand": 2,
+        "snow": 1,
+        "preferred_background": "grass",
+        "preferred_count": 31,
+        "preferred_fraction": 0.9117647058823529,
+        "alternative_count": 3,
+        "alternative_fraction": 0.08823529411764706
+      },
+      "horse": {
+        "grass": 2,
+        "sand": 31,
+        "snow": 1,
+        "preferred_background": "sand",
+        "preferred_count": 31,
+        "preferred_fraction": 0.9117647058823529,
+        "alternative_count": 3,
+        "alternative_fraction": 0.08823529411764706
+      }
+    },
+    "evaluation_background_counts_by_split_and_class": {
+      "val": {
+        "cow": {
+          "grass": 8,
+          "sand": 8,
+          "snow": 8
+        },
+        "horse": {
+          "grass": 8,
+          "sand": 8,
+          "snow": 8
+        }
+      },
+      "test": {
+        "cow": {
+          "grass": 8,
+          "sand": 8,
+          "snow": 8
+        },
+        "horse": {
+          "grass": 8,
+          "sand": 8,
+          "snow": 8
+        }
+      }
+    },
+    "evaluation_counterfactual_groups": {
+      "val": 16,
+      "test": 16,
+      "variants_per_group": 3,
+      "backgrounds_per_group": [
+        "grass",
+        "sand",
+        "snow"
+      ],
+      "group_fields_consistent": [
+        "source_image_id",
+        "source_annotation_id",
+        "class_name",
+        "label",
+        "split"
+      ]
+    },
+    "source_image_split_leakage_count": 0
+  },
+  "training": {
+    "architecture": {
+      "type": "SmallCNN",
+      "convolution_channels": [
+        16,
+        32,
+        64,
+        96
+      ],
+      "blocks": "3x3 convolutions with ReLU; 2x2 max pooling after the first three convolutional blocks",
+      "head": "Adaptive average pooling to 1x1 followed by a 96-to-2 linear classifier",
+      "input": "224x224 RGB, converted to float in [0,1]"
+    },
+    "configuration": {
+      "seed": 42,
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "loss": "Cross-entropy",
+      "batch_size": 8,
+      "configured_epoch_limit": 30,
+      "early_stopping_patience": 6,
+      "device": "CPU",
+      "cpu_threads": 2,
+      "augmentation": "None"
+    },
+    "epochs_completed": 8,
+    "best_checkpoint_epoch": 2,
+    "checkpoint_selection_metric": "Minimum validation loss",
+    "checkpoint_sha256": "d047c81ad78cefb9f3c2064b4987546d40b4d0855154b8aec9e26665f91b48b9",
+    "best_checkpoint_validation": {
+      "loss": 0.6934599081675211,
+      "accuracy": 0.5,
+      "macro_precision": 0.5,
+      "macro_recall": 0.5,
+      "macro_f1": 0.4920634920634921,
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          15,
+          9
+        ],
+        [
+          15,
+          9
+        ]
+      ]
+    },
+    "last_epoch_8": {
+      "train_loss": 0.29244473401237936,
+      "train_accuracy": 0.8970588235294118,
+      "validation_loss": 0.8846545219421387,
+      "validation_accuracy": 0.5208333333333334
+    },
+    "curve_summary": {
+      "epoch_1": {
+        "train_loss": 0.6952262731159434,
+        "train_accuracy": 0.5,
+        "validation_loss": 0.6934925814469656,
+        "validation_accuracy": 0.5
+      },
+      "epoch_2": {
+        "train_loss": 0.6912539355895099,
+        "train_accuracy": 0.45588235294117646,
+        "validation_loss": 0.6934599081675211,
+        "validation_accuracy": 0.5
+      },
+      "epoch_3": {
+        "train_loss": 0.6698326293159934,
+        "train_accuracy": 0.7941176470588235,
+        "validation_loss": 0.694256583849589,
+        "validation_accuracy": 0.4791666666666667
+      },
+      "epoch_4": {
+        "train_loss": 0.5937286264756146,
+        "train_accuracy": 0.8529411764705882,
+        "validation_loss": 0.7069254120190939,
+        "validation_accuracy": 0.4583333333333333
+      },
+      "epoch_5": {
+        "train_loss": 0.467328502851374,
+        "train_accuracy": 0.8382352941176471,
+        "validation_loss": 0.9459350580970446,
+        "validation_accuracy": 0.5
+      },
+      "epoch_6": {
+        "train_loss": 0.3507453010362737,
+        "train_accuracy": 0.8676470588235294,
+        "validation_loss": 0.809762363632201,
+        "validation_accuracy": 0.4583333333333333
+      },
+      "epoch_7": {
+        "train_loss": 0.2695981693618438,
+        "train_accuracy": 0.9411764705882353,
+        "validation_loss": 0.9782101288437843,
+        "validation_accuracy": 0.5
+      },
+      "epoch_8": {
+        "train_loss": 0.29244473401237936,
+        "train_accuracy": 0.8970588235294118,
+        "validation_loss": 0.8846545219421387,
+        "validation_accuracy": 0.5208333333333334
+      }
+    }
+  },
+  "counterfactual_test": {
+    "evaluated_images": 48,
+    "accuracy": 0.5,
+    "macro_precision": 0.5,
+    "macro_recall": 0.5,
+    "macro_f1": 0.4857142857142857,
+    "confusion_matrix_actual_rows_predicted_columns": [
+      [
+        16,
+        8
+      ],
+      [
+        16,
+        8
+      ]
+    ],
+    "class_metrics": {
+      "cow": {
+        "count": 24,
+        "accuracy": 0.6666666666666666,
+        "precision": 0.5,
+        "recall": 0.6666666666666666,
+        "f1": 0.5714285714285714
+      },
+      "horse": {
+        "count": 24,
+        "accuracy": 0.3333333333333333,
+        "precision": 0.5,
+        "recall": 0.3333333333333333,
+        "f1": 0.4
+      }
+    },
+    "background_accuracy": {
+      "grass": {
+        "correct": 8,
+        "count": 16,
+        "accuracy": 0.5
+      },
+      "sand": {
+        "correct": 8,
+        "count": 16,
+        "accuracy": 0.5
+      },
+      "snow": {
+        "correct": 8,
+        "count": 16,
+        "accuracy": 0.5
+      }
+    },
+    "class_background_accuracy": {
+      "cow": {
+        "grass": 1.0,
+        "sand": 0.0,
+        "snow": 1.0
+      },
+      "horse": {
+        "grass": 0.0,
+        "sand": 1.0,
+        "snow": 0.0
+      }
+    },
+    "counterfactual_group_results": {
+      "groups": 16,
+      "groups_with_identical_predictions": 0,
+      "groups_with_at_least_one_prediction_change": 16,
+      "group_prediction_change_rate": 1.0,
+      "pairwise_variant_comparisons": 48,
+      "pairwise_prediction_flips": 32,
+      "pairwise_prediction_flip_rate": 0.6666666666666666,
+      "groups_correct_on_all_three": 0,
+      "groups_incorrect_on_all_three": 0,
+      "groups_with_mixed_correctness": 16
+    },
+    "preferred_training_background_performance": {
+      "cow": {
+        "preferred_background": "grass",
+        "preferred_accuracy": 1.0,
+        "preferred_correct": 8,
+        "preferred_count": 8,
+        "alternative_accuracy": 0.5,
+        "alternative_correct": 8,
+        "alternative_count": 16
+      },
+      "horse": {
+        "preferred_background": "sand",
+        "preferred_accuracy": 1.0,
+        "preferred_correct": 8,
+        "preferred_count": 8,
+        "alternative_accuracy": 0.0,
+        "alternative_correct": 0,
+        "alternative_count": 16
+      }
+    },
+    "prediction_pattern": "All evaluated variants with grass or snow were predicted as cow; all variants with sand were predicted as horse."
+  },
+  "gradcam": {
+    "checkpoint_epoch": 2,
+    "checkpoint_sha256": "d047c81ad78cefb9f3c2064b4987546d40b4d0855154b8aec9e26665f91b48b9",
+    "target_layer": "SmallCNN.features[9] (Conv2d 64 -> 96 channels)",
+    "test_images": 48,
+    "counterfactual_groups": 16,
+    "localization_method": "Positive min-max-normalized predicted-class Grad-CAM summed inside/outside a binary animal mask from transformed COCO segmentation; transformed alpha mask threshold 128.",
+    "activation_by_background_percent": {
+      "grass": {
+        "inside_animal": 6.9767648577690125,
+        "outside_animal": 93.0232367515564,
+        "sample_count": 16
+      },
+      "sand": {
+        "inside_animal": 12.043493196368217,
+        "outside_animal": 87.95650386810303,
+        "sample_count": 16
+      },
+      "snow": {
+        "inside_animal": 9.14859987795353,
+        "outside_animal": 90.85140228271484,
+        "sample_count": 16
+      }
+    },
+    "inside_activation_difference_percentage_points": {
+      "sand_minus_grass": 5.066728338599204,
+      "sand_minus_snow": 2.8948933184146873
+    },
+    "interpretation_note": "Localization values are descriptive and depend on Grad-CAM and mask construction; they do not prove causal reliance on background or shortcut learning."
+  },
+  "cross_checks": {
+    "metadata_rows_match_dataset_summary": true,
+    "source_ids_crossing_splits": 0,
+    "evaluation_groups_have_exactly_three_expected_backgrounds": true,
+    "test_metrics_match_test_predictions_and_confusion_matrix": true,
+    "validation_metrics_match_selected_epoch_2_history_and_confusion_matrix": true,
+    "gradcam_predictions_match_counterfactual_predictions": true,
+    "gradcam_prediction_comparison_key": [
+      "counterfactual_group_id",
+      "background"
+    ],
+    "notes": [
+      "The 100 class-specific source entries correspond to 95 distinct COCO image IDs because five source images contain both class annotations; the overlapping IDs remain in one split each.",
+      "The validation_metrics.json values describe the restored best epoch-2 checkpoint, not the final epoch-8 row in the training history.",
+      "The group prediction-change rate is 16/16 = 100%; the pairwise flip rate is 32/48 = 66.7%. These use different denominators and are both correct."
+    ]
+  },
+  "output_paths": {
+    "combined_research_report": "experiments/combined_analysis/combined_research_report.md",
+    "combined_results": "experiments/combined_analysis/combined_results.json",
+    "executive_summary": "experiments/combined_analysis/executive_summary.md"
+  }
+}

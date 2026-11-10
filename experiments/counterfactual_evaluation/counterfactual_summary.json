@@ -1,0 +1,53 @@
+{
+  "test_source_group_count": 16,
+  "groups_with_identical_predictions": 0,
+  "groups_with_at_least_one_prediction_change": 16,
+  "group_prediction_change_rate": 1.0,
+  "pairwise_variant_comparisons": 48,
+  "pairwise_prediction_flip_count": 32,
+  "pairwise_prediction_flip_rate": 0.6666666666666666,
+  "groups_correct_across_all_three_variants": 0,
+  "groups_incorrect_across_all_three_variants": 0,
+  "groups_with_mixed_correctness": 16,
+  "per_class": {
+    "cow": {
+      "source_groups": 8,
+      "groups_with_identical_predictions": 0,
+      "groups_with_prediction_changes": 8,
+      "groups_correct_on_all_variants": 0,
+      "groups_incorrect_on_all_variants": 0
+    },
+    "horse": {
+      "source_groups": 8,
+      "groups_with_identical_predictions": 0,
+      "groups_with_prediction_changes": 8,
+      "groups_correct_on_all_variants": 0,
+      "groups_incorrect_on_all_variants": 0
+    }
+  },
+  "preferred_training_background_association": {
+    "cow": {
+      "preferred_training_background": "grass",
+      "preferred_variant_accuracy": 1.0,
+      "alternative_variant_accuracy": 0.5,
+      "preferred_variant_predicted_as_true_class": 8,
+      "preferred_variant_count": 8,
+      "preferred_variant_true_class_prediction_rate": 1.0,
+      "alternative_variant_predicted_as_true_class": 8,
+      "alternative_variant_count": 16,
+      "alternative_variant_true_class_prediction_rate": 0.5
+    },
+    "horse": {
+      "preferred_training_background": "sand",
+      "preferred_variant_accuracy": 1.0,
+      "alternative_variant_accuracy": 0.0,
+      "preferred_variant_predicted_as_true_class": 8,
+      "preferred_variant_count": 8,
+      "preferred_variant_true_class_prediction_rate": 1.0,
+      "alternative_variant_predicted_as_true_class": 0,
+      "alternative_variant_count": 16,
+      "alternative_variant_true_class_prediction_rate": 0.0
+    }
+  },
+  "interpretation_note": "These are objective prediction and accuracy comparisons across background variants; background sensitivity alone is not proof of shortcut learning."
+}

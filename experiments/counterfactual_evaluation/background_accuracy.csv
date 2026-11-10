@@ -1,0 +1,10 @@
+animal_class,background,sample_count,accuracy
+all,grass,16,0.5
+cow,grass,8,1.0
+horse,grass,8,0.0
+all,sand,16,0.5
+cow,sand,8,0.0
+horse,sand,8,1.0
+all,snow,16,0.5
+cow,snow,8,1.0
+horse,snow,8,0.0

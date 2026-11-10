@@ -1,0 +1,1 @@
+Grad-CAM heatmaps and mask-aligned activation percentages describe where the frozen model's predicted-class evidence is concentrated. Differences across backgrounds are descriptive and do not by themselves establish shortcut learning or causality.

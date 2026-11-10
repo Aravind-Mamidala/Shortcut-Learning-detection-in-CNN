@@ -1,0 +1,38 @@
+{
+  "split": "val",
+  "sample_count": 48,
+  "loss": 0.6934599081675211,
+  "accuracy": 0.5,
+  "precision_macro": 0.5,
+  "recall_macro": 0.5,
+  "f1_macro": 0.4920634920634921,
+  "per_class": {
+    "cow": {
+      "precision": 0.5,
+      "recall": 0.625,
+      "f1-score": 0.5555555555555556,
+      "support": 24.0
+    },
+    "horse": {
+      "precision": 0.5,
+      "recall": 0.375,
+      "f1-score": 0.42857142857142855,
+      "support": 24.0
+    },
+    "accuracy": 0.5,
+    "macro avg": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1-score": 0.4920634920634921,
+      "support": 48.0
+    },
+    "weighted avg": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1-score": 0.4920634920634921,
+      "support": 48.0
+    }
+  },
+  "best_epoch": 2,
+  "seed": 42
+}

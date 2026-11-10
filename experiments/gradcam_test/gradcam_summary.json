@@ -1,0 +1,75 @@
+{
+  "checkpoint_epoch": 2,
+  "checkpoint_sha256": "d047c81ad78cefb9f3c2064b4987546d40b4d0855154b8aec9e26665f91b48b9",
+  "model_mode": "eval",
+  "gradient_scope": "Gradients computed only for the target activation; weights are not updated.",
+  "target_layer": "SmallCNN.features[9] (Conv2d 64 -> 96 channels)",
+  "target_class": "predicted class for each test image",
+  "test_image_count": 48,
+  "counterfactual_group_count": 16,
+  "all_groups_have_three_background_variants": true,
+  "class_to_label": {
+    "cow": 0,
+    "horse": 1
+  },
+  "localization_analysis": {
+    "method": "COCO segmentation polygons/RLE were decoded and mapped to each composite using the same animal bounding-box crop, thumbnail scale, centering, and bottom offset as dataset preparation. The binary animal region thresholds the transformed, blurred alpha mask at 128.",
+    "activation_measure": "Sum of positive, min-max-normalized predicted-class Grad-CAM values within or outside the binary animal region, expressed as a percentage.",
+    "by_background": {
+      "grass": {
+        "sample_count": 16,
+        "mean_activation_inside_animal_percent": 6.9767648577690125,
+        "mean_activation_outside_animal_percent": 93.0232367515564
+      },
+      "sand": {
+        "sample_count": 16,
+        "mean_activation_inside_animal_percent": 12.043493196368217,
+        "mean_activation_outside_animal_percent": 87.95650386810303
+      },
+      "snow": {
+        "sample_count": 16,
+        "mean_activation_inside_animal_percent": 9.14859987795353,
+        "mean_activation_outside_animal_percent": 90.85140228271484
+      }
+    },
+    "by_class_and_background": {
+      "grass": {
+        "cow": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 4.724926821887493,
+          "mean_activation_outside_animal_percent": 95.2750768661499
+        },
+        "horse": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 9.228602893650532,
+          "mean_activation_outside_animal_percent": 90.77139663696289
+        }
+      },
+      "sand": {
+        "cow": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 12.723635822534561,
+          "mean_activation_outside_animal_percent": 87.27636051177979
+        },
+        "horse": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 11.363350570201874,
+          "mean_activation_outside_animal_percent": 88.63664722442627
+        }
+      },
+      "snow": {
+        "cow": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 6.184724509716034,
+          "mean_activation_outside_animal_percent": 93.81527614593506
+        },
+        "horse": {
+          "sample_count": 8,
+          "mean_activation_inside_animal_percent": 12.112475246191025,
+          "mean_activation_outside_animal_percent": 87.88752841949463
+        }
+      }
+    }
+  },
+  "observations": "Grad-CAM heatmaps and mask-aligned activation percentages describe where the frozen model's predicted-class evidence is concentrated. Differences across backgrounds are descriptive and do not by themselves establish shortcut learning or causality."
+}

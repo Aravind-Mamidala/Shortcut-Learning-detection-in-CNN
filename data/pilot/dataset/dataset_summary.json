@@ -1,0 +1,65 @@
+{
+  "seed": 42,
+  "animals_per_class_limit": 50,
+  "source_image_counts": {
+    "train": {
+      "cow": 34,
+      "horse": 34
+    },
+    "val": {
+      "cow": 8,
+      "horse": 8
+    },
+    "test": {
+      "cow": 8,
+      "horse": 8
+    }
+  },
+  "generated_sample_counts": {
+    "train": 68,
+    "val": 48,
+    "test": 48
+  },
+  "background_distribution": {
+    "train": {
+      "cow": {
+        "grass": 31,
+        "sand": 2,
+        "snow": 1
+      },
+      "horse": {
+        "grass": 2,
+        "sand": 31,
+        "snow": 1
+      }
+    },
+    "val": {
+      "cow": {
+        "grass": 8,
+        "sand": 8,
+        "snow": 8
+      },
+      "horse": {
+        "grass": 8,
+        "sand": 8,
+        "snow": 8
+      }
+    },
+    "test": {
+      "cow": {
+        "grass": 8,
+        "sand": 8,
+        "snow": 8
+      },
+      "horse": {
+        "grass": 8,
+        "sand": 8,
+        "snow": 8
+      }
+    }
+  },
+  "class_to_label": {
+    "cow": 0,
+    "horse": 1
+  }
+}
